@@ -2,5 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/youngb2/Documents/Libraries/Decompressed/lwjgl-2.8.4/jar/lwjgl_util.jar"/>
+	<classpathentry kind="lib" path="C:/Users/youngb2/Documents/Libraries/Decompressed/lwjgl-2.8.4/jar/lwjgl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:/Users/youngb2/Documents/Libraries/Decompressed/lwjgl-2.8.4/native/windows"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
