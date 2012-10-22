@@ -1,15 +1,15 @@
 Arya
 ====
 
-#=============#
+
 # Description #
-#=============#
+
 
 A classic 2-D top-scrolling game based on the Intelligent Studios original series Fire Emblem. 
 
-+--------------+
-| Dependencies |
-+--------------+
+
+# Dependencies #
+
 
 LWJGL
 Slick2D
