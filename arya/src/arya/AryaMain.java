@@ -4,10 +4,18 @@ import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+/**
+ * 
+ * @author Bryan Young
+ *
+ */
 public class AryaMain extends BasicGame {
 
+	Image land = null;
+	
 	public AryaMain() {
 		super("Project Arya");
 	}
@@ -32,7 +40,7 @@ public class AryaMain extends BasicGame {
 
 	public static void main (String[] args) throws SlickException {
 		AppGameContainer app = new AppGameContainer(new AryaMain());
-		app.setDisplayMode(600, 600, false);
+		app.setDisplayMode(800, 600, false);
 		app.start();
 	}
 }
