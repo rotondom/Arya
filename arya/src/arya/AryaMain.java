@@ -6,11 +6,14 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.tiled.TiledMap;
 
 /**
+ * The main game program
  * 
  * @author Bryan Young
- *
+ * @version 0.01, 6 November 2012
  */
 public class AryaMain extends BasicGame {
 
@@ -40,7 +43,7 @@ public class AryaMain extends BasicGame {
 
 	public static void main (String[] args) throws SlickException {
 		AppGameContainer app = new AppGameContainer(new AryaMain());
-		app.setDisplayMode(800, 600, false);
+		app.setDisplayMode(640, 480, false);
 		app.start();
 	}
 }
