@@ -19,28 +19,32 @@ import org.newdawn.slick.geom.Polygon;
  */
 public class AryaMain extends BasicGame {
 	
+	public BlockMap map;
+	
 	public AryaMain() {
 		super("Project Arya");
 	}
 
 	@Override
-	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
+	public void render(GameContainer container, Graphics g) throws SlickException {
+		BlockMap.tmap.render(0, 0);
+	}
+
+	@Override
+	public void init(GameContainer container) throws SlickException {
+		container.setVSync(true);
+		map = new BlockMap("data/mapResources/FirstMap.tmx");
 		
 	}
 
 	@Override
-	public void init(GameContainer arg0) throws SlickException {
-		
-	}
-
-	@Override
-	public void update(GameContainer arg0, int arg1) throws SlickException {
+	public void update(GameContainer container, int delta) throws SlickException {
 		
 	}
 
 	public static void main (String[] args) throws SlickException {
-		AppGameContainer app = new AppGameContainer(new AryaMain());
-		app.setDisplayMode(640, 480, false);
-		app.start();
+		AppGameContainer container = new AppGameContainer(new AryaMain());
+		container.setDisplayMode(640, 480, false);
+		container.start();
 	}
 }

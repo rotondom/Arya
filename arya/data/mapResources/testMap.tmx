@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="15" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Floor" tilewidth="32" tileheight="32">
+  <image source="platform.png" width="128" height="64"/>
+ </tileset>
+ <tileset firstgid="9" name="platform" tilewidth="16" tileheight="16">
+  <image source="../../../../Documents/Project Arya Research/Tiled Research/platform.png" width="128" height="64"/>
+ </tileset>
+ <layer name="Floor" width="20" height="15">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC53RSwrAIAwEULspiCcodmV7/zO2BQNhmHxsYDYaHoNuJZ5OsrovGW8uOGuO+52dM8yrPz3too1m1uuFu17HjIfucDpG73cYLvPavEOPmeiKh6blRT2r0dHz0MWe2DHreSb+cdbTsUzmZc1sP/Rkbid6j3mrI94+fT0PnIfsN7AEAAA=
+  </data>
+ </layer>
+ <objectgroup name="Collisions" width="20" height="15"/>
+</map>
