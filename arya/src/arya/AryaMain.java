@@ -1,13 +1,15 @@
 package arya;
 
 import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
+import org.newdawn.slick.geom.Polygon;
 
 /**
  * The main game program
@@ -17,7 +19,7 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class AryaMain extends BasicGame {
 
-	Image land = null;
+	public BlockMap map
 	
 	public AryaMain() {
 		super("Project Arya");
@@ -25,19 +27,16 @@ public class AryaMain extends BasicGame {
 
 	@Override
 	public void render(GameContainer arg0, Graphics arg1) throws SlickException {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
-		// TODO Auto-generated method stub
-		
+		map = new BlockMap("");
 	}
 
 	@Override
 	public void update(GameContainer arg0, int arg1) throws SlickException {
-		// TODO Auto-generated method stub
 		
 	}
 
