@@ -18,8 +18,6 @@ import org.newdawn.slick.geom.Polygon;
  * @version 0.01, 6 November 2012
  */
 public class AryaMain extends BasicGame {
-
-	public BlockMap map
 	
 	public AryaMain() {
 		super("Project Arya");
@@ -32,7 +30,7 @@ public class AryaMain extends BasicGame {
 
 	@Override
 	public void init(GameContainer arg0) throws SlickException {
-		map = new BlockMap("");
+		
 	}
 
 	@Override
