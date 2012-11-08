@@ -29,10 +29,13 @@ public class BasicUnit {
 		//Initial attack
 		final int damageInflicted = this.attack + equipped.damage;
 		opponent.health -= damageInflicted;
-		//Retaliation
+		//Call attack animation of this
+		
+		//Retaliation if opponent is not dead
 		if (opponent.checkLife()) {
 			final int damageTaken = opponent.attack + equipped.damage;
 			this.health -= damageTaken;
+			//call attack animation of opponent
 		}
 	}
 	
@@ -43,5 +46,12 @@ public class BasicUnit {
 	protected Boolean checkLife() {
 		if(this.health <= 0) return false;
 		return true;
+	}
+	
+	/**
+	 * Removes object from update list, destroys any references to the object
+	 */
+	protected void destructor() {
+		//Destroy character object
 	}
 }
