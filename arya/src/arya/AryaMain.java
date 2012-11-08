@@ -33,7 +33,7 @@ public class AryaMain extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		container.setVSync(true);
-		map = new BlockMap("data/mapResources/FirstMap.tmx");
+		map = new BlockMap("data/FirstMap.tmx");
 		
 	}
 
