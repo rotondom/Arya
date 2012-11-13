@@ -1,6 +1,7 @@
 package arya;
 
 import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -14,6 +15,7 @@ import org.newdawn.slick.geom.Rectangle;
 public class UnitHealthHUD {
 	Graphics unitStats = new Graphics();
 	Image icon;
+	Color bgColor = new Color(95, 235, 245, 200); //Light blue, some transparency
 	Rectangle background;
 	Rectangle healthTotal;
 	Rectangle healthCurrent;
@@ -21,6 +23,8 @@ public class UnitHealthHUD {
 	String hp = "HP:";
 	int health = 0;
 	int totalHealth = 100;
+	double width;
+	double height;
 	
 	/**
 	 * Constructor to create an appropriately scaled HUD for the game container
@@ -29,8 +33,14 @@ public class UnitHealthHUD {
 	 * @throws SlickException 
 	 */
 	UnitHealthHUD(AppGameContainer container, BasicUnit unit) throws SlickException {
-		background.setSize((float)(container.getWidth()*.3), (float)(container.getHeight()*.2));
-		icon = unit.getIcon();
+		width = (double)(container.getWidth())*.3;
+		height = (double)(container.getHeight())*.2;
+		background = new Rectangle(0, 0, (float)(container.getWidth()*.3), (float)(container.getHeight()*.2));
+		unitStats.setColor(bgColor);
+		unitStats.fill(background);
+		icon = unit.getCharacterSheet();
+		unitStats.drawImage(icon, 5, 5, 69, 69, 0, 0, 64, 64); //crop to the first frame of the characterSheet
+		unitStats.drawString(name, );
 		
 	}
 	

@@ -24,10 +24,10 @@ public class BasicUnit {
 	protected int movement;
 	protected int speed;
 	
-	protected Image icon;
 	protected Image characterSheet;
 	protected Image worldSprite;
 	protected Image combatSprite;
+	protected Image icon = characterSheet.getSubImage(0, 0, 64, 64);	//The icon is the first frame of characterSheet
 	
 	
 	/**
