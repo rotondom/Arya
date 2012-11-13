@@ -40,7 +40,7 @@ public class UnitHealthHUD {
 		unitStats.fill(background);
 		icon = unit.getCharacterSheet();
 		unitStats.drawImage(icon, 5, 5, 69, 69, 0, 0, 64, 64); //crop to the first frame of the characterSheet
-		unitStats.drawString(name, );
+		unitStats.drawString(name, 82, 5);
 		
 	}
 	

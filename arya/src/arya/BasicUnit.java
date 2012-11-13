@@ -15,9 +15,10 @@ public class BasicUnit {
 	protected int xPosition;
 	protected int yPosition;
 	
+	//Both Getter and setters
 	protected Weapon equipped;
 	protected int totalHealth;
-	protected int health;
+	protected int health;//done
 	protected int skill;
 	protected int attack;
 	protected int defence;
@@ -102,5 +103,89 @@ public class BasicUnit {
 	 */
 	void setHealth(int health) {
 		this.health = health;
+	}
+	Weapon getequipped() {
+		return equipped;
+	}
+
+/*int gettotalHealth() {
+		return totalhealth;
+	}
+*/
+	
+int gethealth() {
+		return health;
+	}
+
+int getskill() {
+		return skill;
+	}
+
+int getattack() {
+		return attack;
+	}
+
+int getdefence() {
+		return defence;
+	}
+
+int getmovement() {
+		return movement;
+	}
+
+int getspeed() {
+		return speed;
+	}
+
+Image getCharacterSheet() {
+		return characterSheet;
+	}
+
+Image getworldSprite() {
+		return worldSprite;
+	}
+
+void setEquipped(Weapon equipped) {
+		this.equipped = equipped;
+	}
+
+void setTotalHealth(int totalHealth) {
+		this.totalHealth = totalHealth;
+	}
+
+/*void setHealth(int health) {
+		this.health = health;
+	}
+*/
+void setSkill(int skill) {
+		this.skill =skill;
+	}
+
+void setAttack(int attack) {
+		this.attack = attack;
+	}
+
+void setDefence(int defence){ 
+		this.defence = defence;
+	}
+
+void setMovement(int movement) {
+		this.movement = movement;
+	}
+
+void setSpeed(int speed) {
+		this.speed= speed;
+	}
+
+void setCharacterSheet(Image characterSheet) {
+		this.characterSheet = characterSheet;
+	}
+
+void setWorldSprite(Image worldSprite) {
+		this.worldSprite = worldSprite;
+	}
+
+void setCombatSprite(Image combatSprite) {
+		this.combatSprite = combatSprite;
 	}
 }
