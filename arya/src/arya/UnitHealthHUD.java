@@ -1,9 +1,9 @@
 package arya;
 
-
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 
 /**
@@ -26,9 +26,11 @@ public class UnitHealthHUD {
 	 * Constructor to create an appropriately scaled HUD for the game container
 	 * @param container		the AppGameContainer to build the health HUD for, provides information on size
 	 * @param unit			the unit who's health stats are to be rendered
+	 * @throws SlickException 
 	 */
-	UnitHealthHUD(AppGameContainer container, BasicUnit unit) {
+	UnitHealthHUD(AppGameContainer container, BasicUnit unit) throws SlickException {
 		background.setSize((float)(container.getWidth()*.3), (float)(container.getHeight()*.2));
+		icon = unit.getIcon();
 		
 	}
 	
