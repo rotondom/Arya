@@ -15,7 +15,7 @@ import org.newdawn.slick.geom.Polygon;
 /**
  * The main game program
  * 
- * @author Bryan Young
+ * @author Mike Kucharski
  * @version 0.01, 6 November 2012
  */
 public class AryaMain extends BasicGame {
