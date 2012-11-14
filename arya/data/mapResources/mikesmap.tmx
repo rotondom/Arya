@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="30" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="collision" tilewidth="16" tileheight="16">
+  <image source="collision.png" width="128" height="51"/>
+ </tileset>
+ <tileset firstgid="25" name="GrassTile" tilewidth="16" tileheight="16">
+  <image source="GrassTile.png" width="16" height="16"/>
+ </tileset>
+ <tileset firstgid="26" name="hillTile" tilewidth="16" tileheight="16">
+  <image source="hillTile.png" width="16" height="16"/>
+ </tileset>
+ <tileset firstgid="27" name="mountTile" tilewidth="16" tileheight="16">
+  <image source="mountTile.png" width="16" height="16"/>
+ </tileset>
+ <tileset firstgid="28" name="treeTile" tilewidth="16" tileheight="16">
+  <image source="treeTile.png" width="16" height="16"/>
+ </tileset>
+ <tileset firstgid="29" name="sprite" tilewidth="16" tileheight="16">
+  <image source="sprite.png" width="16" height="16"/>
+ </tileset>
+ <layer name="colision" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC8VWWw7AIAjT+196v4agtOWxJkt08ugmVtbysR/v92N9Cgg/hWPFt0X+GY5Zfig3xDby7/DdZozkst+U4ceuo7kq6laxYfOpNcvEtvadWsNyO8eZc4KC4XeOs/WEgj1/02D07g+omsLub6fmRQ+ap1P3Ku7NLn4VyPQTFTm7eh60D7Vxb3O0b1R097Xu8WFidfLz7jWll1F6rErtUrQKiYnsCwJWqyq087a30XmZ5uj1UrfaZDmiQHy89ehcM7FQP9Ze1V8Ft38U1d40x2iOcO2Eoqen/dQ+qzVcwe8D8T5VMcASAAA=
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3RUQrAMAwCUK/R+1+0v0PSwciKBhQCfj7iArDEB+rPqG2V1dVXRW1iGzvVrgk+tsTXc8b3j83NVznVrgk+UHfznWzx9WyOPraqXVN8p63VljdbfN9czr7KFl9vWxef+//iu2Ob4NvJhFBvwBIAAA==
+  </data>
+ </layer>
+ <layer name="stuff" width="40" height="30">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC72WCwrEMAhEc43Npve/5rLQgoiOjqkZkKSN1FdjPmuMsW4bov88a6GxDi3Vz/DtahK+mimTn6VaRnNwfE+cLJv2Z1XhY2KyuZZM0qp8LFs2hzt8lXmtzjHLx8Tw+E7sN/KfLmMc7UOn+SxphtNsiO/keaEVranT55klxPd13mnLxNgR4oss+/1dRk+S5XNbRV18Un+2bM6kpmq7JHPHzLOc3zcYdVzNwNbjG3cEj9PjsziRuvg8Fo8Z8WnOLkbZl8+R2BxadwGPD3Ex+zTDN29GjxPVWWWf1oyMv8WIagyt70xM2UZsiFEqcx4zjFEetU+G0VKV8YkZjWdyiL5TvTdkFeVwGr7WWuzm83LoMVk11MFoxbuCcVTfb/H9ANOPFunAEgAA
+  </data>
+ </layer>
+</map>
