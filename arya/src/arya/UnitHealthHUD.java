@@ -1,7 +1,7 @@
 package arya;
 
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -35,7 +35,7 @@ public class UnitHealthHUD {
 	 * @param unit			the unit who's health stats are to be rendered
 	 * @throws SlickException 
 	 */
-	UnitHealthHUD(AppGameContainer container, BasicUnit unit) throws SlickException {
+	public UnitHealthHUD(GameContainer container, BasicUnit unit) throws SlickException {
 		bgWidth = (float)(container.getWidth()*.3);
 		bgHeight = (float)(container.getHeight()*.2);
 		background = new Rectangle(0, 0, bgWidth, bgHeight);
@@ -49,6 +49,7 @@ public class UnitHealthHUD {
 		
 		barTotalWidth = bgWidth-5 - bgWidth * .5;
 		healthBarWidth = barTotalWidth * (1 - ((totalHP - health) / totalHP));
+		//Fix the following line, too long and nasty
 		healthCurrent = new Rectangle((float)(bgWidth *.5), (float)(bgHeight*.74), (float)(bgWidth - 5), (float)(bgHeight*.76));
 	}
 	

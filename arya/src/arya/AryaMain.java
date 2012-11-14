@@ -15,6 +15,8 @@ import org.newdawn.slick.SlickException;
 public class AryaMain extends BasicGame {
 	
 	public BlockMap map;
+	public UnitHealthHUD unitHealth;
+	public BasicUnit lyn;
 	
 	public AryaMain() {
 		super("Project Arya");
@@ -29,7 +31,7 @@ public class AryaMain extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		container.setVSync(true);
 		map = new BlockMap("data/FirstMap.tmx");
-		
+		unitHealth = new UnitHealthHUD(container, lyn);
 	}
 
 	@Override
