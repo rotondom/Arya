@@ -1,15 +1,10 @@
 package arya;
 
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.tiled.TiledMap;
-import org.newdawn.slick.geom.Polygon;
 
 /**
  * The main game program
@@ -20,6 +15,8 @@ import org.newdawn.slick.geom.Polygon;
 public class AryaMain extends BasicGame {
 	
 	public BlockMap map;
+	public UnitHealthHUD unitHealth;
+	public BasicUnit lyn;
 	
 	public AryaMain() {
 		super("Project Arya");
@@ -33,8 +30,8 @@ public class AryaMain extends BasicGame {
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		container.setVSync(true);
-		map = new BlockMap("data/mapResources/FirstMap.tmx");
-		
+		map = new BlockMap("data/FirstMap.tmx");
+		unitHealth = new UnitHealthHUD(container, lyn);
 	}
 
 	@Override
