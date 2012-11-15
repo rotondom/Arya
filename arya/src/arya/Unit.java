@@ -86,7 +86,7 @@ public class Unit {
 	 * Gets the combat sprite sheet image of the unit
 	 * @return		the combat sprite sheet of the unit
 	 */
-	Image getCombatSprite() {
+	Image[] getCombatSprite() {
 		return combatSprite;
 	}
 	
@@ -189,7 +189,7 @@ public class Unit {
 	 * Sets the unit's combat sprite sheet
 	 * @param combatSprite	the new Image for the unit's sprite sheet
 	 */
-	void setCombatSprite(Image combatSprite) {
+	void setCombatSprite(Image[] combatSprite) {
 		this.combatSprite = combatSprite;
 	}
 	
