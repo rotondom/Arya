@@ -1,5 +1,6 @@
 package arya;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 
 /**
@@ -10,7 +11,7 @@ import org.newdawn.slick.Image;
  *  @since 0.01
  */
 
-public class BasicUnit {
+public class Unit {
 	
 	protected int xPosition;
 	protected int yPosition;
@@ -27,9 +28,9 @@ public class BasicUnit {
 	
 	protected Image characterSheet;
 	protected Image worldSprite;
-	protected Image combatSprite;
 	protected Image icon = characterSheet.getSubImage(0, 0, 64, 64);	//The icon is the first frame of characterSheet
-	
+	protected Image[] combatSprite;
+	protected Animation combat;
 	
 	/**
 	 * Checks the state of life of the unit
@@ -44,7 +45,7 @@ public class BasicUnit {
 	 * Outlines the combat engine that dictates the results of character engagement
 	 * @param opponent		the character being attacked
 	 */
-	protected void combat(BasicUnit opponent) {
+	protected void combat(Unit opponent) {
 		//Initial attack
 		final int damageInflicted = this.attack + equipped.damage;
 		opponent.health -= damageInflicted;

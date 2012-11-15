@@ -35,7 +35,7 @@ public class UnitHealthHUD {
 	 * @param unit			the unit who's health stats are to be rendered
 	 * @throws SlickException 
 	 */
-	public UnitHealthHUD(GameContainer container, BasicUnit unit) throws SlickException {
+	public UnitHealthHUD(GameContainer container, Unit unit) throws SlickException {
 		bgWidth = (float)(container.getWidth()*.3);
 		bgHeight = (float)(container.getHeight()*.2);
 		background = new Rectangle(0, 0, bgWidth, bgHeight);
