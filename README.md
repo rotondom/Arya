@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Arya
 ====
 
@@ -17,25 +16,3 @@ A classic 2-D top-scrolling game based on the Intelligent Studios original serie
 
 LWJGL
 Slick2D
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
