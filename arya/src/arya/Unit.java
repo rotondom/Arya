@@ -13,6 +13,10 @@ import org.newdawn.slick.Image;
 
 public class Unit {
 	
+	//TODO implement methods seen in Zombie class  for other sub-units
+	//TODO implement fields seen in Zombie class for other sub-units
+	//TODO implement Unit as a superclass of some new ally/enemy character classes
+	
 	protected int xPosition;
 	protected int yPosition;
 	
@@ -28,7 +32,7 @@ public class Unit {
 	
 	protected Image characterSheet;
 	protected Image worldSprite;
-	protected Image icon = characterSheet.getSubImage(0, 0, 64, 64);	//The icon is the first frame of characterSheet
+	protected Image icon;
 	protected Image[] combatSprite;
 	protected Animation combat;
 	

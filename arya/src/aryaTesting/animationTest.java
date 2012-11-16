@@ -2,11 +2,11 @@ package aryaTesting;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
-import arya.Unit;
 import aryaCharacters.Zombie;
 
 /**
@@ -16,7 +16,8 @@ import aryaCharacters.Zombie;
  */
 public class animationTest extends BasicGame{
 
-	protected Unit testUnit;
+	protected Zombie testUnit;
+	Color bg = new Color(0, 0, 0);
 	
 	public animationTest() {
 		super("Test Animation");
@@ -26,7 +27,8 @@ public class animationTest extends BasicGame{
 	@Override
 	public void render(GameContainer game, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
-		
+		g.setBackground(bg);
+		testUnit.drawAttack(20, 20);
 	}
 
 	@Override

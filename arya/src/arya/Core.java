@@ -12,6 +12,10 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class Core extends StateBasedGame {
 
+	//TODO Implement a state based game with a default menu state with fields for state changes
+	//		let the options be: Play Horde, ...
+	//TODO Implement Horde game state
+	
 	public Core(String name) {
 		super(name);
 	}
@@ -20,13 +24,11 @@ public class Core extends StateBasedGame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void initStatesList(GameContainer arg0) throws SlickException {
-		// TODO Auto-generated method stub
 		
 	}
 

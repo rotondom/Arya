@@ -4,6 +4,7 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import arya.FrameAnimation;
 import arya.Unit;
 
 /**
@@ -34,7 +35,9 @@ public class Zombie extends Unit {
 	public static final int ATTACK_FRAMES = 24;
 	public static final int DODGE_FRAMES = 2;
 	
-	public static final int FRAME_DURRATION = 50;
+	public static final int FRAME_DURRATION = 250;
+	
+	Thread frameAnimate;
 	
 	//Temporary variables
 	private int i = 0;
@@ -45,6 +48,7 @@ public class Zombie extends Unit {
 	private Image snip;
 	private Image flipped;
 	
+	//variables for primary animation rendering method
 	public Image icon;
 	public Animation attack;
 	public Animation dodge;
@@ -55,12 +59,24 @@ public class Zombie extends Unit {
 	public Animation up;
 	public Animation waitStance;
 	
+	//variables for animation rendering method 2
+	public FrameAnimation animator;
+	public Image[] attack2;
+	public Image[] dodge2;
+	public Image[] down2;
+	public Image[] focus2;
+	public Image[] left2;
+	public Image[] right2;
+	public Image[] up2;
+	public Image[] waitStance2;
 	
 	
+	//TODO research Image class. Is it possible to search for pixels of a certain color?
+	//		If so, see if we can automate the formation of these COORD tables...
 	
 	/**Data tracking table for the frames of the attack animation
 	 * Tracks vertices of individual frames in the form x1,y1,x2,y2 */
-	private static final int[][] ATTACK_COORDS = { {  34,  27,  64,  59 },
+	private static final int[][] ATTACK_COORDS =     { {  34,  27,  64,  59 },
 		                                               {  69,  27, 106,  59 },
 		                                               { 117,  26, 150,  59 },
 		                                               { 154,  27, 182,  59 },
@@ -133,20 +149,58 @@ public class Zombie extends Unit {
 
 	public void drawAttack(int x, int y) {
 		attack.draw(x, y);
+		animator = new FrameAnimation(attack2, x, y, FRAME_DURRATION);
 	}
 	
+	public void drawDodge(int x, int y) {
+		dodge.draw(x, y);
+	}
+	
+	public void drawDown(int x, int y) {
+		down.draw(x, y);
+	}
+	
+	public void drawFocus(int x, int y) {
+		focus.draw(x, y);
+	}
+	
+	public void drawLeft(int x, int y) {
+		left.draw(x, y);
+	}
+	
+	public void drawRight(int x, int y) {
+		right.draw(x, y);
+	}
+	
+	public void drawUp(int x, int y) {
+		up.draw(x, y);
+	}
+	
+	public void drawWait(int x, int y) {
+		waitStance.draw(x, y);
+	}
+	
+	
+	//TODO because these init() are so similarly formatted, research automation.
+	//		Is it possible to create a default init() and pass it the unique values
+	//		while maintaining the same end results?
+	
 	private void initAttackAnimation() {
+		attack = new Animation();
+		attack2 = new Image[ATTACK_FRAMES];
 		for (i = 0; i < ATTACK_FRAMES; i++) {
 			frameX = ATTACK_COORDS[i][X1];
 			frameY = ATTACK_COORDS[i][Y1];
 			frameW = ATTACK_COORDS[i][X2] - ATTACK_COORDS[i][X1];
 			frameH = ATTACK_COORDS[i][Y2] - ATTACK_COORDS[i][Y1];
 			snip = characterSheet.getSubImage(frameX, frameY, frameW, frameH);
+			attack2[i] = snip;
 			attack.addFrame(snip, FRAME_DURRATION);
 		}
 	}
 	
 	private void initDodgeAnimation() {
+		dodge = new Animation();
 		for (i = 0; i < DODGE_FRAMES; i++) {
 			frameX = DODGE_COORDS[i][X1];
 			frameY = DODGE_COORDS[i][Y1];
@@ -158,6 +212,7 @@ public class Zombie extends Unit {
 	}
 	
 	private void initDownAnimation() {
+		down = new Animation();
 		for (i = 0; i < MOTION_FRAMES; i++) {
 			frameX = OVERWORLD_COORDS[DOWN][i][X1];
 			frameY = OVERWORLD_COORDS[DOWN][i][Y1];
@@ -169,13 +224,14 @@ public class Zombie extends Unit {
 	}
 	
 	private void initFocusAnimation() {
+		focus = new Animation();
 		for (i = 0; i < FOCUS_FRAMES; i++) {
 			frameX = OVERWORLD_COORDS[FOCUS][i][X1];
 			frameY = OVERWORLD_COORDS[FOCUS][i][Y1];
 			frameW = OVERWORLD_COORDS[FOCUS][i][X2] - OVERWORLD_COORDS[FOCUS][i][X1];
 			frameH = OVERWORLD_COORDS[FOCUS][i][Y2] - OVERWORLD_COORDS[FOCUS][i][Y1];
 			snip = characterSheet.getSubImage(frameX, frameY, frameW, frameH);
-			down.addFrame(snip, FRAME_DURRATION);
+			focus.addFrame(snip, FRAME_DURRATION);
 		}
 	}
 	
@@ -188,17 +244,19 @@ public class Zombie extends Unit {
 	}
 	
 	private void initLeftAnimation() {
+		left = new Animation();
 		for (i = 0; i < MOTION_FRAMES; i++) {
 			frameX = OVERWORLD_COORDS[SIDE][i][X1];
 			frameY = OVERWORLD_COORDS[SIDE][i][Y1];
 			frameW = OVERWORLD_COORDS[SIDE][i][X2] - OVERWORLD_COORDS[SIDE][i][X1];
 			frameH = OVERWORLD_COORDS[SIDE][i][Y2] - OVERWORLD_COORDS[SIDE][i][Y1];
 			snip = characterSheet.getSubImage(frameX, frameY, frameW, frameH);
-			down.addFrame(snip, FRAME_DURRATION);
+			left.addFrame(snip, FRAME_DURRATION);
 		}
 	}
 	
 	private void initRightAnimation() {
+		right = new Animation();
 		for (i = 0; i < MOTION_FRAMES; i++) {
 			frameX = OVERWORLD_COORDS[SIDE][i][X1];
 			frameY = OVERWORLD_COORDS[SIDE][i][Y1];
@@ -206,22 +264,24 @@ public class Zombie extends Unit {
 			frameH = OVERWORLD_COORDS[SIDE][i][Y2] - OVERWORLD_COORDS[SIDE][i][Y1];
 			snip = characterSheet.getSubImage(frameX, frameY, frameW, frameH);
 			flipped = snip.getFlippedCopy(false, true); //Get flipped image on the y axis
-			down.addFrame(flipped, FRAME_DURRATION);
+			right.addFrame(flipped, FRAME_DURRATION);
 		}
 	}
 	
 	private void initUpAnimation() {
+		up = new Animation();
 		for (i = 0; i < MOTION_FRAMES; i++) {
 			frameX = OVERWORLD_COORDS[UP][i][X1];
 			frameY = OVERWORLD_COORDS[UP][i][Y1];
 			frameW = OVERWORLD_COORDS[UP][i][X2] - OVERWORLD_COORDS[UP][i][X1];
 			frameH = OVERWORLD_COORDS[UP][i][Y2] - OVERWORLD_COORDS[UP][i][Y1];
 			snip = characterSheet.getSubImage(frameX, frameY, frameW, frameH);
-			down.addFrame(snip, FRAME_DURRATION);
+			up.addFrame(snip, FRAME_DURRATION);
 		}
 	}
 	
 	private void initWaitAnimation() {
+		waitStance = new Animation();
 		for (i = 0; i < WAIT_FRAMES; i++) {
 			frameX = OVERWORLD_COORDS[WAIT][i][X1];
 			frameY = OVERWORLD_COORDS[WAIT][i][Y1];
@@ -230,5 +290,9 @@ public class Zombie extends Unit {
 			snip = characterSheet.getSubImage(frameX, frameY, frameW, frameH);
 			waitStance.addFrame(snip, FRAME_DURRATION);
 		}
+	}
+	
+	public void paintSprites(int x, int y) {
+		characterSheet.draw(x, y);
 	}
 }
