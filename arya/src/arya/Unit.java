@@ -8,7 +8,7 @@ import org.newdawn.slick.Image;
  * Provides methods and variables to manipulate and track unit statistics.
  *  
  *  @author youngb2
- *  @since 0.01
+ *  @since Alpha.01
  */
 
 public class Unit {

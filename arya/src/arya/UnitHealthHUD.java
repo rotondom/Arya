@@ -10,7 +10,7 @@ import org.newdawn.slick.geom.Rectangle;
 /**
  * Manages information used to render the unit health Heads Up Display object drawn over the game screen.
  * @author youngb2
- *
+ * @since Alpha.01
  */
 public class UnitHealthHUD {
 	Graphics unitStats = new Graphics();
