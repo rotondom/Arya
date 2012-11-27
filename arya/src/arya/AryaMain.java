@@ -46,7 +46,7 @@ public class AryaMain extends BasicGame {
 	}
 	public void update(GameContainer container, int delta) throws SlickException{ 
 		if (container.getInput().isKeyDown(Input.KEY_LEFT) ) {
-			playerX-=.1 * delta;
+			playerX-= .1 * delta;
 			playerPoly.setX(playerX);
 			if (entityCollisionWith()){
 				playerX++;

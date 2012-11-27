@@ -8,25 +8,16 @@ import arya.FrameAnimation;
 import arya.Unit;
 
 /**
- * 
+ * Unique character class for implementing the specific unit types graphical components
+ * Manages information about the specific sprite sheet and individual frames not shared with other 
+ * characters. 
  * @author youngb2
  * @since Alpha.02
  */
-public class Zombie extends Unit {
+public class Zombie extends Unit implements FrameID {
 	
-	
-	//Overworld frame set ID
-	private static final int WAIT = 0;
-	private static final int DOWN = 1;
-	private static final int SIDE = 2;
-	private static final int UP = 3;
-	private static final int FOCUS = 4;
-	
-	//Static coordinate ID
-	private static final int X1 = 0;
-	private static final int Y1 = 1;
-	private static final int X2 = 2;
-	private static final int Y2 = 3;
+	//TODO simplify the class and convert some of the methods to methods inherited from the superclass
+	//TODO IMPORTANT: fix .PNG file rendering!
 	
 	//Number of frames, tracking constants
 	public static final int WAIT_FRAMES = 2;
@@ -36,8 +27,6 @@ public class Zombie extends Unit {
 	public static final int DODGE_FRAMES = 2;
 	
 	public static final int FRAME_DURRATION = 250;
-	
-	Thread frameAnimate;
 	
 	//Temporary variables
 	private int i = 0;

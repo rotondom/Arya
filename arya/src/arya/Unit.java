@@ -11,11 +11,9 @@ import org.newdawn.slick.Image;
  *  @since Alpha.01
  */
 
-public class Unit {
+public abstract class Unit {
 	
-	//TODO implement methods seen in Zombie class  for other sub-units
-	//TODO implement fields seen in Zombie class for other sub-units
-	//TODO implement Unit as a superclass of some new ally/enemy character classes
+	//TODO implement Unit as an abstract superclass of some new ally/enemy character classes
 	
 	protected int xPosition;
 	protected int yPosition;
