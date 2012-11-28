@@ -30,7 +30,7 @@ public class Menu extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 		
-		//Input input = container.getInput();
+		Input input = container.getInput();
 		//int xpos = Mouse.getX();
 		//int ypos = Mouse.getY();
 		
