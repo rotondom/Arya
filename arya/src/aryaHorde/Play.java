@@ -18,7 +18,7 @@ public class Play extends BasicGameState {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
-		
+		g.drawString("Want to play a game?", 100, 100);
 	}
 
 	@Override
