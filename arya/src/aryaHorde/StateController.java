@@ -9,24 +9,24 @@ import org.newdawn.slick.state.*;
  * @author youngb2
  * @version 1.0
  */
-public class StateController extends StateBasedGame {
+public class StateController extends StateBasedGame implements GameConstants {
 
 	public static final String gamename = "Project Arya";
-	public static final int menu = 0;
-	public static final int play = 1;
+	public static final int MENU = 0;
+	public static final int PLAY = 1;
 	
 	public StateController(String name) {
 		super(name);
-		this.addState(new Menu(menu));
-		this.addState(new Play(play));
+		this.addState(new Menu(MENU));
+		this.addState(new Play(PLAY));
 	}
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-		this.getState(menu).init(gc, this);
-		this.getState(play).init(gc, this);
+		this.getState(MENU).init(gc, this);
+		this.getState(PLAY).init(gc, this);
 		
-		this.enterState(menu);
+		this.enterState(MENU);
 	}
 
 	public static void main(String[] args) {
@@ -34,7 +34,7 @@ public class StateController extends StateBasedGame {
 		
 		try {
 			appgc = new AppGameContainer(new StateController(gamename));
-			appgc.setDisplayMode(640, 480, false);
+			appgc.setDisplayMode(WIDTH, HEIGHT, false);
 			appgc.start();
 		} catch(SlickException e) {
 			e.printStackTrace();
