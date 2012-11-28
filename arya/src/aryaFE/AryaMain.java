@@ -1,4 +1,4 @@
-package arya;
+package aryaFE;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Animation;

@@ -1,4 +1,4 @@
-package arya;
+package aryaFE;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;

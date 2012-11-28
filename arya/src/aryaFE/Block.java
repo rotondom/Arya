@@ -1,4 +1,4 @@
-package arya;
+package aryaFE;
 
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.geom.Polygon;

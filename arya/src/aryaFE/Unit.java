@@ -1,4 +1,4 @@
-package arya;
+package aryaFE;
 
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;

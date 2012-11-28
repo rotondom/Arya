@@ -1,4 +1,4 @@
-package arya;
+package aryaFE;
 
 public class Weapon {
 	

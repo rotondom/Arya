@@ -1,4 +1,4 @@
-package arya;
+package aryaFE;
 
 import java.util.ArrayList;
 import org.newdawn.slick.SlickException;

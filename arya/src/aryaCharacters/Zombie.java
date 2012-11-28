@@ -4,8 +4,8 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import arya.FrameAnimation;
-import arya.Unit;
+import aryaFE.FrameAnimation;
+import aryaFE.Unit;
 
 /**
  * Unique character class for implementing the specific unit types graphical components
