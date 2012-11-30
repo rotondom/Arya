@@ -16,6 +16,7 @@ public class Play extends BasicGameState implements GameConstants {
 	float playerY = cameraY + HEIGHT/2;
 	float centeredX = playerX;
 	float centeredY = playerY;
+	float lowerYCollisionShift;
 	
 	
 	
@@ -44,6 +45,8 @@ public class Play extends BasicGameState implements GameConstants {
 		movingRight = new Animation(walkRight, duration, false);
 		
 		player = movingDown;
+		
+		lowerYCollisionShift = (-1 * worldMap.getHeight() + playerY * 2 + movingDown.getHeight());
 	}
 
 	@Override
@@ -72,21 +75,48 @@ public class Play extends BasicGameState implements GameConstants {
 			throws SlickException {
 		Input input = container.getInput();
 		
-		if(input.isKeyDown(Input.KEY_W)) {
+		if(input.isKeyDown(Input.KEY_W)) {						//Move up
 			player = movingUp;
 			
 			
-			if(cameraY < 0) {
+			if(cameraY < 0) {									//Track camera up
 				//move camera
 				cameraY += delta * .1f;
-				if (cameraY < (-1 * worldMap.getHeight() + playerY * 2 + movingDown.getHeight())) {
+				if (cameraY < lowerYCollisionShift) {			//Lock camera, move player up (top border)
 					cameraY -= delta * .1f;
 					playerY -= delta * .1f;
-				} 
-			} else {
+				} else if (playerY > centeredY ) {				//lock camera, move player up. (lower border)
+					playerY -= delta * .1f;
+					cameraY -= delta * .1f;
+				}
+			} else {											
 				//move player
 				playerY -= delta * .1f;
-				if (playerY <= 0) { playerY += delta * .1f; }
+				if (playerY <= 0) { 
+					playerY += delta * .1f; 
+				}
+			}
+		}
+		
+		if(input.isKeyDown(Input.KEY_S)) {						//Move down
+			
+			player = movingDown;
+			
+			if(cameraY > lowerYCollisionShift) {
+				cameraY -= delta * .1f;
+				if (cameraY < lowerYCollisionShift - playerY) {
+					cameraY += delta * .1f;
+					playerY -= delta * .1f;
+				} else if (playerY < centeredY) {
+					playerY += delta * .1f;
+					cameraY += delta * .1f;
+				}
+			} else {
+				//move player
+				playerY += delta * .1f;
+				if (playerY >= (centeredY * 2) - movingDown.getHeight()) {
+					playerY -= delta * .1f;
+				}
 			}
 		}
 		
@@ -96,29 +126,8 @@ public class Play extends BasicGameState implements GameConstants {
 			
 		}
 		
-		if(input.isKeyDown(Input.KEY_S)) {
-			
-			player = movingDown;
-			
-			if(cameraY > (-1 * worldMap.getHeight() + playerY * 2 + movingDown.getHeight())) {
-				cameraY -= delta * .1f;
-				if(cameraY > -1 * playerY) {
-					cameraY += delta * .1f;
-					playerY += delta * .1f;
-				}
-			} else {
-				//move player
-				playerY += delta * .1f;
-				centeredY -= delta * .1f;
-				if(centeredY <= 0 + movingDown.getHeight()) { 
-					playerY -= delta * .1f;
-					centeredY += delta* .1f;
-				}
-			}
-			
-
-		cameraY -= delta * .1f;	
-		}
+		
+		
 		if(input.isKeyDown(Input.KEY_D)) {
 			player = movingRight;
 			cameraX -= delta * .1f;
