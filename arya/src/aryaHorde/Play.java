@@ -10,10 +10,12 @@ public class Play extends BasicGameState implements GameConstants {
 	boolean quitGame = false;
 	//how long each image will last (200 = 2/10 of a second)
 	int[] duration = {200, 200};
-	float playerPositionX = 0;
-	float playerPositionY = 0;
-	float shiftX = playerPositionX + WIDTH/2;
-	float shiftY = playerPositionY + HEIGHT/2;
+	float cameraX = 0;
+	float cameraY = 0;
+	float playerX = cameraX + WIDTH/2;
+	float playerY = cameraY + HEIGHT/2;
+	float centeredX = playerX;
+	float centeredY = playerY;
 	
 	
 	
@@ -47,10 +49,12 @@ public class Play extends BasicGameState implements GameConstants {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
-		worldMap.draw(playerPositionX, playerPositionY);
-		player.draw(shiftX, shiftY);
-		g.drawString("Ermagerd, the player is at x: " + -1 * playerPositionX 
-				+ " y: " + playerPositionY, 20, HEIGHT - 20);
+		worldMap.draw(cameraX, cameraY);
+		player.draw(playerX, playerY);
+		g.drawString("Camera is at x: " + cameraX 
+				+ " y: " + cameraY, 20, HEIGHT - 20);
+		g.drawString("Player is at x: " +  playerX 
+				+ " y: " + playerY, 20, HEIGHT - 40);
 		
 		if(quitGame) {
 			g.drawString("Resume (R)", 250, 100);
@@ -70,22 +74,54 @@ public class Play extends BasicGameState implements GameConstants {
 		
 		if(input.isKeyDown(Input.KEY_W)) {
 			player = movingUp;
-			playerPositionY += delta * .1f;
 			
+			
+			if(cameraY < 0) {
+				//move camera
+				cameraY += delta * .1f;
+				if (cameraY < (-1 * worldMap.getHeight() + playerY * 2 + movingDown.getHeight())) {
+					cameraY -= delta * .1f;
+					playerY -= delta * .1f;
+				} 
+			} else {
+				//move player
+				playerY -= delta * .1f;
+				if (playerY <= 0) { playerY += delta * .1f; }
+			}
 		}
+		
 		if(input.isKeyDown(Input.KEY_A)) {
 			player = movingLeft;
-			playerPositionX += delta * .1f;
+			cameraX += delta * .1f;
 			
 		}
+		
 		if(input.isKeyDown(Input.KEY_S)) {
-			player = movingDown;
-			playerPositionY -= delta * .1f;
 			
+			player = movingDown;
+			
+			if(cameraY > (-1 * worldMap.getHeight() + playerY * 2 + movingDown.getHeight())) {
+				cameraY -= delta * .1f;
+				if(cameraY > -1 * playerY) {
+					cameraY += delta * .1f;
+					playerY += delta * .1f;
+				}
+			} else {
+				//move player
+				playerY += delta * .1f;
+				centeredY -= delta * .1f;
+				if(centeredY <= 0 + movingDown.getHeight()) { 
+					playerY -= delta * .1f;
+					centeredY += delta* .1f;
+				}
+			}
+			
+
+		cameraY -= delta * .1f;	
 		}
 		if(input.isKeyDown(Input.KEY_D)) {
 			player = movingRight;
-			playerPositionX -= delta * .1f;
+			cameraX -= delta * .1f;
 			
 		}
 	}
