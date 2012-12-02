@@ -20,7 +20,7 @@ public class StateController extends StateBasedGame implements GameConstants {
 		this.addState(new Menu(MENU));
 		this.addState(new Play(PLAY));
 	}
-
+	
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
 		this.getState(MENU).init(gc, this);
@@ -28,7 +28,11 @@ public class StateController extends StateBasedGame implements GameConstants {
 		
 		this.enterState(MENU);
 	}
-
+	
+	/**
+	 * 
+	 * @param args		the arguments passed to the program
+	 */
 	public static void main(String[] args) {
 		AppGameContainer appgc;
 		

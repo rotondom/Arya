@@ -4,6 +4,12 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
+/**
+ * Defines the main menu mode of the application 
+ * 
+ * @author Bryan Young
+ *
+ */
 public class Menu extends BasicGameState {
 
 	Image playButton;
@@ -12,6 +18,7 @@ public class Menu extends BasicGameState {
 	public Menu(int state) {
 		
 	}
+	
 	
 	@Override
 	public void init(GameContainer container, StateBasedGame game)
