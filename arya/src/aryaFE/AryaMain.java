@@ -10,6 +10,42 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Polygon;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+
+public class Board extends JPanel implements Runnable, Commons { 
+
+    private Dimension d;
+    private ArrayList aliens;
+    private Player player;
+    private Shot shot;
+
+    private int alienX = 150;
+    private int alienY = 5;
+    private int direction = -1;
+    private int deaths = 0;
+
+    private boolean ingame = true;
+    private final String expl = "../spacepix/explosion.png";
+    private final String alienpix = "../spacepix/alien.png";
+    private String message = "Game Over";
+
+    private Thread animator;
+    
+    
 /**
  * The main game program
  * 
@@ -100,5 +136,19 @@ public class AryaMain extends BasicGame {
 			new AppGameContainer(new AryaMain(), 640, 480, false);
 		container.start();
 	}
+	
+	public void drawBombing(Graphics g) {
+
+	     Iterator i3 = aliens.iterator();      
+	     while (i3.hasNext()) {
+	         Alien a = (Alien) i3.next();
+
+	         Alien.Bomb b = a.getBomb();
+	         if (!b.isDestroyed()) {
+	             g.drawImage(b.getImage(), b.getX(), b.getY(), this); 
+	         }
+	     }
+	 }
 }
+
 
