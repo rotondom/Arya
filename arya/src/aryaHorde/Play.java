@@ -12,11 +12,12 @@ public class Play extends BasicGameState implements GameConstants {
 	int[] duration = {200, 200};
 	float cameraX = 0;
 	float cameraY = 0;
-	float playerX = cameraX + WIDTH/2;
-	float playerY = cameraY + HEIGHT/2;
-	float centeredX = playerX;
-	float centeredY = playerY;
-	float lowerYCollisionShift;
+	float playerX = WIDTH/2;
+	float playerY = HEIGHT/2;
+	float bottomCollisionShift;
+	float sideCollisionShift;
+	float sideCollision;
+	float bottomCollision;
 	
 	
 	
@@ -34,10 +35,14 @@ public class Play extends BasicGameState implements GameConstants {
 		//Image leftFlipped = left.getFlippedCopy(false, true);
 		
 		worldMap = new Image("res/bucky/world.png");
-		Image[] walkUp = {new Image("res/bucky/buckysBack.png"), new Image("res/bucky/buckysBack.png")};
-		Image[] walkDown = {new Image("res/bucky/buckysFront.png"), new Image("res/bucky/buckysFront.png")};
-		Image[] walkLeft = {new Image("res/bucky/buckysLeft.png"), new Image("res/bucky/buckysLeft.png")};
-		Image[] walkRight = {new Image("res/bucky/buckysRight.png"), new Image("res/bucky/buckysRight.png")};
+		Image[] walkUp = {new Image("res/bucky/buckysBack.png"), 
+				new Image("res/bucky/buckysBack.png")};
+		Image[] walkDown = {new Image("res/bucky/buckysFront.png"), 
+				new Image("res/bucky/buckysFront.png")};
+		Image[] walkLeft = {new Image("res/bucky/buckysLeft.png"), 
+				new Image("res/bucky/buckysLeft.png")};
+		Image[] walkRight = {new Image("res/bucky/buckysRight.png"), 
+				new Image("res/bucky/buckysRight.png")};
 		
 		movingUp = new Animation(walkUp, duration, false);
 		movingDown = new Animation(walkDown, duration, false);
@@ -46,7 +51,10 @@ public class Play extends BasicGameState implements GameConstants {
 		
 		player = movingDown;
 		
-		lowerYCollisionShift = (-1 * worldMap.getHeight() + playerY * 2 + movingDown.getHeight());
+		sideCollisionShift = (-1 * worldMap.getWidth() + CENTERED_X * 2 + movingRight.getWidth());
+		bottomCollisionShift = (-1 * worldMap.getHeight() + CENTERED_Y * 2 + movingDown.getHeight());
+		sideCollision = (CENTERED_X * 2) - movingRight.getWidth();
+		bottomCollision = (CENTERED_Y * 2) - movingDown.getHeight();
 	}
 
 	@Override
@@ -65,7 +73,6 @@ public class Play extends BasicGameState implements GameConstants {
 			g.drawString("Quit Game (Q)", 250, 160);
 			if(!quitGame) {
 				g.clear();
-				System.exit(0);
 			}
 		}
 	}
@@ -78,14 +85,13 @@ public class Play extends BasicGameState implements GameConstants {
 		if(input.isKeyDown(Input.KEY_W)) {						//Move up
 			player = movingUp;
 			
-			
-			if(cameraY < 0) {									//Track camera up
+			if (cameraY < 0) {									//Track camera up
 				//move camera
 				cameraY += delta * .1f;
-				if (cameraY < lowerYCollisionShift) {			//Lock camera, move player up (top border)
+				if (cameraY < bottomCollisionShift) {			//Lock camera, move player up (top border)
 					cameraY -= delta * .1f;
 					playerY -= delta * .1f;
-				} else if (playerY > centeredY ) {				//lock camera, move player up. (lower border)
+				} else if (playerY > CENTERED_Y ) {				//lock camera, move player up. (lower border)
 					playerY -= delta * .1f;
 					cameraY -= delta * .1f;
 				}
@@ -98,40 +104,60 @@ public class Play extends BasicGameState implements GameConstants {
 			}
 		}
 		
+		if(input.isKeyDown(Input.KEY_A)) {
+			player = movingLeft;
+			
+			if (cameraX < 0) {									//Move camera, track right
+				cameraX += delta *.1f;
+				if(playerX > CENTERED_X) {						//lock camera, move player left (near side)
+					playerX -= delta * .1f;
+					cameraX -= delta * .1f;
+				}
+			} else {											//Move player
+				playerX -= delta * .1f;
+				if (playerX <= 0) {
+					playerX += delta * .1f;
+				}
+			}
+		}
+		
 		if(input.isKeyDown(Input.KEY_S)) {						//Move down
 			
 			player = movingDown;
 			
-			if(cameraY > lowerYCollisionShift) {
+			if (cameraY > bottomCollisionShift) {
 				cameraY -= delta * .1f;
-				if (cameraY < lowerYCollisionShift - playerY) {
+				if (cameraY < bottomCollisionShift - playerY) {
 					cameraY += delta * .1f;
 					playerY -= delta * .1f;
-				} else if (playerY < centeredY) {
+				} else if (playerY < CENTERED_Y) {
 					playerY += delta * .1f;
 					cameraY += delta * .1f;
-				}
+				} 
 			} else {
 				//move player
 				playerY += delta * .1f;
-				if (playerY >= (centeredY * 2) - movingDown.getHeight()) {
+				if (playerY >= bottomCollision) {
 					playerY -= delta * .1f;
 				}
 			}
 		}
 		
-		if(input.isKeyDown(Input.KEY_A)) {
-			player = movingLeft;
-			cameraX += delta * .1f;
-			
-		}
-		
-		
-		
 		if(input.isKeyDown(Input.KEY_D)) {
 			player = movingRight;
-			cameraX -= delta * .1f;
 			
+			if (cameraX > sideCollisionShift) {							//Track camera left
+				cameraX -= delta *.1f;
+				if(playerX < CENTERED_X) {								//Lock camera, move player left
+					playerX += delta * .1f;
+					cameraX += delta * .1f;
+				} 
+			} else {															//Move Player
+				playerX += delta * .1f;
+				if (playerX >= sideCollision) {		//Lock player
+					playerX -= delta * .1f;
+				}
+			}
 		}
 	}
 
